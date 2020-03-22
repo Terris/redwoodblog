@@ -13,7 +13,11 @@ const Routes = () => {
   return (
     <Router>
       <Route path="/signin" page={SigninPage} name="signin" />
-      <Route path="/confirm_signup" page={ConfirmSignupPage} name="confirmSignup" />
+      <Route
+        path="/confirm_signup"
+        page={ConfirmSignupPage}
+        name="confirmSignup"
+      />
       <Route path="/signup" page={SignupPage} name="signup" />
       <Route path="/admin" page={AdminPage} name="admin" />
       <Route path="/admin/posts" page={PostsPage} name="posts" />
@@ -24,7 +28,7 @@ const Routes = () => {
         name="editPost"
       />
       <Route path="/admin/posts/new" page={NewPostPage} name="newPost" />
-      <Route path="/admin/about" page={AboutPage} name="about" />
+      <Route path="/about" page={AboutPage} name="about" />
       <Route path="/" page={HomePage} name="home" />
       <Route path="/contact" page={ContactPage} name="contact" />
       <Route path="/blog-post/{id:Int}" page={BlogPostPage} name="blogPost" />

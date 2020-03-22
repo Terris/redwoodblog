@@ -1,19 +1,23 @@
-import { auth } from '../../auth'
+import { Link, routes } from '@redwoodjs/router'
+import { useIdentityContext } from 'react-netlify-identity'
+import AdminHeader from 'src/components/AdminHeader'
 
 const AdminLayout = ({ children }) => {
-  const user = auth.currentUser()
+  const { user } = useIdentityContext()
   console.log(user)
-  if (!user) {
-    auth
-      .login('terris.kremer@gmail.com', 'squeeza')
-      .then((response) => {
-        console.log('Success! Response: ' + JSON.stringify({ response }))
-      })
-      .catch((error) => console.log('Failed :( ' + JSON.stringify(error)))
-
-    return <p>Not authorized</p>
-  }
-  return <>{children}</>
+  return user ? (
+    <>
+      <AdminHeader />
+      {children}
+    </>
+  ) : (
+    <div>
+      <h3>
+        You are not authorized to view that page.{' '}
+        <Link to={routes.signin()}>Please sign in.</Link>
+      </h3>
+    </div>
+  )
 }
 
 export default AdminLayout

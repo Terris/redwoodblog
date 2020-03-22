@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { navigate, routes } from '@redwoodjs/router'
 import {
   Form,
   TextField,
@@ -9,24 +10,22 @@ import {
 } from '@redwoodjs/web'
 import { useForm } from 'react-hook-form'
 import BlogLayout from 'src/layouts/BlogLayout'
+import { useIdentityContext } from 'react-netlify-identity'
 
-import { auth } from '../../auth'
-
-const SignupPage = (props) => {
+const SignupPage = () => {
   const formMethods = useForm({ mode: 'onBlur' })
+  const { signupUser } = useIdentityContext()
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
 
   const onSubmit = (data) => {
     setLoading(true)
-    auth
-      .signup(data.email, data.password)
-      .then((response) => {
-        console.log('Confirmation email sent', response)
-        setLoading(false)
+    signupUser(data.email, data.password)
+      .then(() => {
+        navigate(routes.admin())
       })
-      .catch((error) => {
-        setError(JSON.stringify(error))
+      .catch((err) => {
+        setError(err.message)
         setLoading(false)
       })
   }
