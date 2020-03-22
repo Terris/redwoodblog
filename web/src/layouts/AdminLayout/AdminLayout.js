@@ -4,7 +4,7 @@ import AdminHeader from 'src/components/AdminHeader'
 
 const AdminLayout = ({ children }) => {
   const { user } = useIdentityContext()
-  console.log(user)
+
   return user ? (
     <>
       <AdminHeader />
