@@ -3,5 +3,4 @@
 # Prisma Migrate lockfile v1
 # Read more about conflict resolution here: TODO
 
-20200321164301-create-posts
-20200321173228-create-contact
+20200321215133-create-init
