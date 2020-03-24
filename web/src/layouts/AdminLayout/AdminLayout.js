@@ -6,10 +6,10 @@ const AdminLayout = ({ children }) => {
   const { user } = useIdentityContext()
 
   return user ? (
-    <>
+    <div>
       <AdminHeader />
       {children}
-    </>
+    </div>
   ) : (
     <div>
       <h3>

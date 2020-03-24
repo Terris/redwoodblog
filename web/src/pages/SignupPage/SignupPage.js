@@ -72,6 +72,7 @@ const SignupPage = () => {
         </Label>
         <TextField
           name="password"
+          type="password"
           style={{ display: 'block' }}
           errorStyle={{ display: 'block', borderColor: 'red' }}
           validation={{
@@ -79,6 +80,27 @@ const SignupPage = () => {
           }}
         />
         <FieldError name="password" style={{ color: 'red' }} />
+
+        <Label
+          name="passwordconfirmation"
+          style={{ display: 'block' }}
+          errorStyle={{ display: 'block', color: 'red' }}
+        >
+          Password Confirmation
+        </Label>
+        <TextField
+          name="passwordconfirmation"
+          type="password"
+          style={{ display: 'block' }}
+          errorStyle={{ display: 'block', borderColor: 'red' }}
+          validation={{
+            required: true,
+            validate: (value) =>
+              value === formMethods.watch('password') ||
+              'The passwords do not match',
+          }}
+        />
+        <FieldError name="passwordconfirmation" style={{ color: 'red' }} />
 
         <Submit style={{ display: 'block' }} disabled={loading}>
           Save

@@ -72,6 +72,7 @@ const SigninPage = () => {
         </Label>
         <TextField
           name="password"
+          type="password"
           style={{ display: 'block' }}
           errorStyle={{ display: 'block', borderColor: 'red' }}
           validation={{
